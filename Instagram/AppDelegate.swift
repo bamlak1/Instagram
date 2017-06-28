@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Parse.initialize(
+            with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "Instagram"
+                configuration.clientKey = "asdfghjkl"  // set to nil assuming you have not set clientKey
+                configuration.server = "https://floating-brushlands-41767.herokuapp.com/parse"
+            })
+        )
+        if let currentUser = PFUser.current() {
+            print("Welcome back \(currentUser.username!)")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let TabBarViewController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController")
+            window?.rootViewController = TabBarViewController
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("logoutNotification"), object: nil, queue: OperationQueue.main) { (Notification) in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            self.window?.rootViewController = loginViewController
+        
+        }
         return true
     }
 
