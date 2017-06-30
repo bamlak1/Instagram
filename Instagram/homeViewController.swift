@@ -27,7 +27,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         // add refresh control to table view
         postsTableView.insertSubview(refreshControl, at: 0)
-        
+
         fetchData()
     }
     
@@ -53,10 +53,20 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let post = allPosts![indexPath.row]
         let caption = post["caption"]
         let photo = post["media"] as! PFFile
-        let username = post["username"]
+        let user = post["author"] as! PFUser
+        let username = user.username
+        
+        
         
         cell.captionLabel.text = caption as? String //set the caption text
-        cell.usernameLabel.text = username as? String
+        cell.usernameLabel.text = username
+        
+        if let date = post["timestamp"]{
+            cell.dateLabel.text = date as! String
+        } else {
+            cell.dateLabel.text = "No Date"
+        }
+        
         
         //set the photo image
         photo.getDataInBackground { (imageData: Data!, error: Error?) in
@@ -71,6 +81,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let query = PFQuery(className: "Post")
         query.addDescendingOrder("createdAt")
         query.limit = 25
+        query.includeKey("author")
         
         // fetch data asynchronously
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in

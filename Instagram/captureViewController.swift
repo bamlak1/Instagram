@@ -68,7 +68,7 @@ class captureViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func didPressShare(_ sender: Any) {
         let caption = captionTextField.text
         let image = photoImageView.image
-        Post.postUserImage(image: image, withCaption: caption) { (success: Bool, error: Error?) in
+        Post.postUserImage(image: image, withCaption: caption, withTimestamp: Date()) { (success: Bool, error: Error?) in
             print("post was created!")
             print(success)
             self.tabBarController?.selectedIndex = 0
