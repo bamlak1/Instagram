@@ -1,23 +1,30 @@
 # Project 3 - Instagram
 
-Instagram is a *what type of* application for iOS.
+Instagram is a *social media/photo sharing* application for iOS.
 
-Submitted by: **Your Name Here**
+Submitted by: **Bamlak Gessessew**
 
-Time spent: *hours* hours spent in total
+Time spent: *19 hours* hours spent in total
 
 ## User Stories
 
 The following **required** functionality is complete:
 
-* [ ] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
+* [X] User can see app icon
+* [X] User can log in and log out of his or her account
+* [X] The current signed in user is persisted across app restarts
+* [X] User can take a photo, add a caption, and post it to "Instagram"
+* [X] User can view the last 20 posts submitted to "Instagram"
+* [X] User can pull to refresh the last 20 posts submitted to "Instagram"
+* [X] User can tap a post to view post details, including timestamp and caption.
 
 The following **optional** features are implemented:
-* [ ] Settings page to change the default tip percentage.
-* [ ] UI animations
-* [ ] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
-* [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+* [X] SStyle the login page to look like the real Instagram login page.
+* [X] UI animations
+* [X] Style the feed to look like the real Instagram feed.
+* [X] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
+* [X] Show the username and creation time for each post
+* [X] User Profiles: Allow the logged in user to add a profile photo
 
 The following **additional** features are implemented:
 
@@ -27,14 +34,15 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![](https://github.com/bamlak1/tippy/blob/master/TippyDemo.gif)
+![](https://github.com/bamlak1/Instagram/blob/master/Instagram.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
-My biggest challenge was allowing the user to change the default tip values on the bar. It was almost working but someting in the ViewController was bugging out, claiming that I could not make an array of variables that were going to be input. If this had worked, I would have been able to set different tip percentages in the bar and the app would have memorized those for the next use. 
+I had a lot of trouble with formatting in the beginning because I could not visualize what to do first. SInce this projecgt was more free based, I could not simply follow a video to complete it. This required more thought about the layout and individual process of what to include and when. 
+
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
